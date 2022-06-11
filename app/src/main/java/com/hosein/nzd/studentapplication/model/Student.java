@@ -1,9 +1,14 @@
 package com.hosein.nzd.studentapplication.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "student_table")
 public class Student {
 
+    @PrimaryKey
     private long id;
 
     @SerializedName("firstName")

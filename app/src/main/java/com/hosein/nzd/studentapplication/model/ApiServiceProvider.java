@@ -5,16 +5,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiServiceProvider {
 
-    public static Retrofit retrofit;
+    public static ApiService apiService;
 
-    public static Retrofit getRetrofit() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+    public static ApiService getApiService() {
+        if (apiService == null) {
+            Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("https://hosein-nzd.ir/android_app/student/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
+
+            apiService = retrofit.create(ApiService.class);
         }
-        return retrofit;
+        return apiService;
     }
 
 }
