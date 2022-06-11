@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimaryAlpha5">#16177BF3</color>
 
     <color name="dracula1">#070d2b</color>
     <color name="dracula2">#000312</color>
