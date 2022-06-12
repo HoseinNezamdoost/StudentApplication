@@ -17,6 +17,9 @@ public interface StudentDao {
     LiveData<List<Student>> getStudent();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addStudent(List<Student> students);
+    void addStudents(List<Student> students);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addStudent(Student student);
 
 }

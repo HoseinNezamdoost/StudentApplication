@@ -23,36 +23,49 @@ public class ViewModelMain extends ViewModel {
 
     StudentRepository repository;
     MutableLiveData<String> error = new MutableLiveData<>();
+    MutableLiveData<String> toolbarText = new MutableLiveData<>();
+    MutableLiveData<Boolean> progressbar = new MutableLiveData<>();
     Disposable disposable;
 
     public ViewModelMain(StudentRepository repository) {
         this.repository = repository;
+        toolbarText.setValue("Receiving list of new students...");
+
         repository.refreshStudent()
-        .subscribeOn(Schedulers.io())
-        .subscribe(new CompletableObserver() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
-                disposable = d;
-            }
+                .subscribeOn(Schedulers.io())
+                .doFinally(() -> {progressbar.postValue(false); toolbarText.postValue("StudentApplication");})
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable = d;
+                    }
 
-            @Override
-            public void onComplete() {
+                    @Override
+                    public void onComplete() {
 
-            }
+                    }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-                error.postValue(e.getMessage());
-            }
-        });
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        error.postValue(e.getMessage());
+                    }
+                });
     }
 
-    public LiveData<List<Student>> getGetStudent() {
+    public LiveData<List<Student>> getStudent() {
         return repository.getStudent();
     }
 
     public LiveData<String> getError() {
         return error;
+    }
+
+    public LiveData<String> getToolbarText() {
+        return toolbarText;
+    }
+
+    public LiveData<Boolean> getProgressbar() {
+        return progressbar;
     }
 
     @Override

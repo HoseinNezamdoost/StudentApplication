@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/drawable/background_course.xml" value="0.3005" />
+        <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/drawable/maker_shape.xml" value="0.296" />
         <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/drawable/shape_firstname_student_char.xml" value="0.1635" />
+        <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/layout/activity_add_new_student.xml" value="0.346875" />
         <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/layout/activity_main.xml" value="0.346875" />
+        <entry key="..\:/Android Project New Elecomco/project/StudentApplication/app/src/main/res/layout/item_student_rv.xml" value="0.346875" />
       </map>
     </option>
   </component>
