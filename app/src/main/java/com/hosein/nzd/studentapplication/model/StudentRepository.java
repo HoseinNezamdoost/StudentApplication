@@ -6,6 +6,7 @@ import com.hosein.nzd.studentapplication.database.StudentDao;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,19 +21,8 @@ public class StudentRepository {
         this.studentDao = studentDao;
     }
 
-    public void refreshStudent() {
-        apiService.getStudent().enqueue(new Callback<List<Student>>() {
-            @Override
-            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
-                List<Student> students = response.body();
-                studentDao.addStudent(students);
-            }
-
-            @Override
-            public void onFailure(Call<List<Student>> call, Throwable t) {
-
-            }
-        });
+    public Completable refreshStudent() {
+        return apiService.getStudent().doOnSuccess(students -> {studentDao.addStudent(students);}).ignoreElement();
     }
 
     public LiveData<List<Student>> getStudent() {
